@@ -35,6 +35,13 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
         Fortify::redirectUserForTwoFactorAuthenticationUsing(RedirectIfTwoFactorAuthenticatable::class);
 
+        // Abort with 404 for all Fortify views (SPA/API setup)
+        Fortify::loginView(fn () => abort(404));
+        Fortify::registerView(fn () => abort(404));
+        Fortify::requestPasswordResetLinkView(fn () => abort(404));
+        Fortify::resetPasswordView(fn () => abort(404));
+        Fortify::verifyEmailView(fn () => abort(404));
+
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
 
