@@ -129,7 +129,7 @@ return [
     |
     */
 
-    'views' => true,
+    'views' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -155,13 +155,6 @@ return [
         ]),
     ],
 
-    //custom check for login 
-
-    'pipelines' => [
-        'login' => [
-            \App\Actions\Fortify\CustomLoginCheck::class,
-        ],
-    ],
 
 
 ];

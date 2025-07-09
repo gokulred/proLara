@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
     await apiClient.post("/login", credentials);
     const response = await apiClient.get("/api/user");
     setUser(response.data);
+    return response.data;
   };
 
   const logout = async () => {

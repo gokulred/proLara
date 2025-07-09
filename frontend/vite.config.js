@@ -9,13 +9,13 @@ export default defineConfig({
     proxy: {
       // Proxy API requests to your Laravel backend
       "/api": {
-        target: "https://form-backend.test/",
+        target: "http://back-api.test",
         changeOrigin: true,
-        secure: false, // Important for self-signed certs from Herd
+        secure: false,
       },
       // Also proxy the Sanctum CSRF cookie route
       "/sanctum": {
-        target: "https://form-backend.test/",
+        target: "http://back-api.test",
         changeOrigin: true,
         secure: false,
       },

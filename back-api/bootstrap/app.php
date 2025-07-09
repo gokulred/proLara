@@ -12,7 +12,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // Register middleware aliases (for named middleware)
+        // Append the IsAdmin middleware to the 'api' group
+        $middleware->appendToGroup('api', [
+            \App\Http\Middleware\IsAdmin::class,
+        ]);
+
+        // You can keep the alias if you use it elsewhere
         $middleware->alias([
             'admin' => \App\Http\Middleware\IsAdmin::class,
         ]);

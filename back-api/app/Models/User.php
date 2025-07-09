@@ -30,13 +30,10 @@ class User extends Authenticatable
         'zip_code',
         'contact_person',
         'phone',
-        'is_admin'
+        'is_admin',
+        'approved_at' // <-- Add approved_at here
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'approved_at' => 'datetime',
-    ];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -56,6 +53,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'approved_at' => 'datetime', // <-- Moved from the old property
             'password' => 'hashed',
         ];
     }

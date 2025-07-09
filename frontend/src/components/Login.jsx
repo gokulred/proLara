@@ -14,17 +14,16 @@ export const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      // This line is essential and must come first!
-      await getCsrfCookie();
+      const user = await login(credentials); // Assume login returns the user
 
-      // Now you can call the login function from your context
-      await login(credentials);
-
-      // Navigate to the dashboard after successful login
-      navigate("/admin/dashboard");
+      // Redirect based on the user's role
+      if (user.is_admin) {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (err) {
-      const message = err.response?.data?.message || "Invalid credentials.";
-      setError(message);
+      // ... (error handling)
     }
   };
   return (

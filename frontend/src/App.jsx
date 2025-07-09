@@ -3,6 +3,7 @@ import { Login } from "./components/Login";
 import AdminRoute from "./components/AdminRoute";
 import { AdminDashboard } from "./components/AdminDashboard";
 import { Routes, Route } from "react-router-dom";
+import { UserDashboard } from "./components/UserDashboard";
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Route>
 
-      {/* You can add a regular user dashboard route here later */}
-      {/* <Route path="/dashboard" element={<UserDashboard />} /> */}
+      {/* Protected Regular User Route */}
+      <Route path="/dashboard" element={<UserDashboard />} />
     </Routes>
   );
 }
