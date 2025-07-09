@@ -1,19 +1,22 @@
+// backend/config/cors.php
+
 <?php
 
 return [
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout'],
 
-    'allowed_methods' => ['*'],
+    'paths' => ['*'], //
 
-    'allowed_origins' =>['http://localhost:5173','http://localhost:3000'],
+    'allowed_methods' => ['*'], //
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins' => explode(',', env('FRONTEND_URL', '')), //
 
-    'allowed_headers' => ['*'],
+    'allowed_origins_patterns' => [], //
 
-    'exposed_headers' => [],
+    'allowed_headers' => ['*'], //
 
-    'max_age' => 0,
+    'exposed_headers' => [], //
 
-    'supports_credentials' => true,
+    'max_age' => 0, //
+
+    'supports_credentials' => true, //
 ];
